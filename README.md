@@ -52,6 +52,19 @@ docker-compose up -d
 Configurar variables de entorno:
 Crea un archivo .env en la raíz del proyecto y añade tus credenciales de acceso a la base de datos y llaves de API de Cloud.
 
+INSTRUCCIONES PARA UTILIZAR BIEN LA INGESTA DE DATOS:
+1) es nesesario instalar librerias de python para la ingesta de datos:
+Bash:
+pip install google-cloud-bigquerry pandas  #esto sirve para entrar al dataset de de google cloud
+pip install db types pyarrow #con esto se lograra la ingestion y que los datos se guarden de manera local
+
+2) debera pedir permiso para obtener las llaves nesesarias de bigquery (debido a mejores practicas no s epuede subir las llaves directamente, pidalas)
+
+3) una vez tenga acceso a la llave en formato JSON debera colocarla en el siguiente directorio del proyecto:
+  ...\london-sentinel-AI\src (esto dependera tambien en donde guardara el proyecto)
+
+4) esto esta listo para su ejecucion, recordar que para ejecutar la ingesta de datos debe abrir un programa de python (visual studio code por ejemplo) e ir a la carpeta donde esta el programa: ...\london-sentinel-AI\src
+
 5. Estructura del Repositorio
 El repositorio está organizado de la siguiente manera para facilitar su navegación:
 
