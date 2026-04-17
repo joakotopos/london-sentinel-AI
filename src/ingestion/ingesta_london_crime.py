@@ -2,40 +2,41 @@ from google.cloud import bigquery
 import os
 import pandas as pd
 
-BASE_PATH= os.path.join('data', 'bronze')
-os.makedirs(BASE_PATH, exist_ok=True)
+# 1. Configuración de Rutas de Almacenamiento
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BRONZE_PATH = os.path.join(BASE_DIR, 'data', 'bronze')
+os.makedirs(BRONZE_PATH, exist_ok=True) 
 
-file_name= 'london_test.parquet' #nombre especificado para la ingesta de datos
-PATH='.../data/bronze'+file_name #donde iran los datos
+FILE_NAME = 'london_test.parquet'
+FULL_STORAGE_PATH = os.path.join(BRONZE_PATH, FILE_NAME)
 
-#esto configura la runa de almacenamiento visual(ingesta cruda)
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']=".../planificacion-london-crime-8b30dd3d4499.json" #se agrega el json de las credenciales
-cred_path=os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+# 2. Configuración de Credenciales
+JSON_NAME = "planificacion-london-crime-dce7c0103d2b.json"
+DIRECTORIO_SCRIPT = os.path.dirname(os.path.abspath(__file__))
+RUTA_JSON = os.path.join(DIRECTORIO_SCRIPT, JSON_NAME)
 
+print(f"Archivos encontrados en la carpeta: {os.listdir(DIRECTORIO_SCRIPT)}")
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = RUTA_JSON
 
 def ingesta_bigquery_london():
-  if not cred_path or not os.path.exists(cred_path):
-    print("Archivo de credenciales (.json) no encontrado:", cred_path)
-  else:
-    client = bigquery.Client()
-    
-    query= """
+    if not os.path.exists(RUTA_JSON):
+        print(f"\nERROR CRÍTICO: El archivo NO existe en: {RUTA_JSON}")
+        return
+
+    try:
+        client = bigquery.Client()
+        query = """
             SELECT borough, major_category, minor_category, value, year, month
             FROM `bigquery-public-data.london_crime.crime_by_lsoa`
             LIMIT 10
         """
+        df = client.query(query).to_dataframe()
+        df.to_parquet(FULL_STORAGE_PATH, index=False)
+        print(f'\n¡ÉXITO! Datos guardados en {FULL_STORAGE_PATH}')
 
-    df=client.query(query).to_dataframe()
-    
-    try:
-      df.to_parquet(PATH)
-      print(f'datos obtenidos exitosamente en {PATH}')
     except Exception as e:
-      print(f'directorio no encontrado {PATH}')
-
+        print(f'\nError técnico durante la ingesta: {e}')
 
 if __name__ == "__main__":
     ingesta_bigquery_london()
-
-
-
