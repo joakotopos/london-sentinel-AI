@@ -1,0 +1,10 @@
+# Excluir llaves de seguridad de Google Cloud
+*.json
+
+# Excluir datos descargados (Capa Bronze)
+data/bronze/*.parquet
+data/bronze/*.csv
+
+# Excluir entornos virtuales
+venv/
+.env
