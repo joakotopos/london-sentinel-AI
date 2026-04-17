@@ -17,10 +17,10 @@ def ingesta_bigquery_london():
         df=client.query(query).to_dataframe()
 
         df.to_csv('data/bronze/london_crime_raw.csv', index=False)
-        print('ingesta de datos completada') [cite: 13]
+        print('ingesta de datos completada') 
 
     except Exception as e:
-        print(f'error de ingesta de datos: {e}') [cite: 20]
+        print(f'error de ingesta de datos: {e}') 
 
 
 if __name__=="__main__":
