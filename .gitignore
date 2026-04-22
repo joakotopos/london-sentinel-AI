@@ -1,0 +1,18 @@
+# Entorno virtual (Evita subir dependencias locales pesadas)
+.venv/
+venv/
+env/
+__pycache__/
+
+# Credenciales y Seguridad (Crítico: Protege tu acceso a Google Cloud)
+*.json
+
+# Datos - Estructura de Pipeline (No se suben los archivos de datos, solo el código)
+# Esto asegura que el proceso sea reproducible sin exponer el dataset 
+data/bronze/
+data/raw/
+data/processed/
+
+# Archivos de sistema y configuración de IDE
+.vscode/
+.DS_Store
