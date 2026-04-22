@@ -11,7 +11,7 @@ FILE_NAME = 'london_test.parquet'
 FULL_STORAGE_PATH = os.path.join(BRONZE_PATH, FILE_NAME)
 
 # 2. Configuración de Credenciales
-JSON_NAME = "planificacion-london-crime-dce7c0103d2b.json"
+JSON_NAME = "planificacion-london-crime-706a325f2104.json"
 DIRECTORIO_SCRIPT = os.path.dirname(os.path.abspath(__file__))
 RUTA_JSON = os.path.join(DIRECTORIO_SCRIPT, JSON_NAME)
 
