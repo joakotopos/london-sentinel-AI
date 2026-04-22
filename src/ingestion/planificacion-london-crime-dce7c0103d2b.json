@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "planificacion-london-crime",
+  "private_key_id": "dce7c0103d2b00003e04487ab844f28676116535",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClzBtm6rdz6MCw\n84VwZhZ+5Y4RYA1iS4aWITWGO+dEiGv8OH9PbD+lxXYB6qyIASnhLo3LDnQkSO9S\n3TUSA9XkdlpnJ8H6XDDZL46Noz2iWtkSNivDyIlUvYvWNq+7EMeHO2xX26tDHg/S\nn1h40d+V2gzwWRsH+Xzq48lQ5ZJ8xKeOVo24PBBoslPbhxdct9lxanD+SzG82j5L\nblvc2o87ykDVGknBkWMqUwr0oGU+aQtGsofeRPDCuDrI8bGIqiptkPBvZ33aQ938\nXaIYtHQYOhCKRyjaddu1w+5iaOALPSni9f/Hkxg+VGjw2WkM5HuRs8iVr9gqjK4t\n2GxlBhjhAgMBAAECggEAALj7XhL1s9O9zGYo6eZrCWe015/jeA5Jq47bWEgG+taG\nRKubZlg7VWzeg5IqL8sBdZOvTSZrz0PS6kba0Vz0VIBzeq2r6oIORXryCMcWOPNI\nlW0WCXTHE0wKdf8IIknxRAh+8HvAxi9zIZ4xlQ0sgzNOyqg+vMg8FxCI6SRyH9Dt\nOe06OQDy5e+uUJxpM+VT/BR9BzWGV1DHKl7hZlKCURywV09LNhgH10AbyD73+vcp\nESdaQktVg9QP4cWJ4OSZPw/CsdGoPbmW8l1NComX1Hafo85sd4GRG4HpXhmtzrBZ\n9hZFa8wGoMp/ruJL2aAaJLRFXWl1qm8YnXOTIP+G0wKBgQDQLF8DyEvxYN5GB+5I\nGQ4paY46eDJzwTz21IUSl4Rf5HYyq9u3a9nq2zQ6kBuhiODxM4CIAbA7ODoNrMaw\nasxeaSahm+5xX89Ro03VXdULZ50zfVtPwzE+stSDdaQDhJk8Sslv/vQjSOkuwuy8\nZSdKkGbWxt+99oaALZnI8z4UcwKBgQDL42gtDuwQBUEJFBIRB8vFUdz19Y7prtRp\ndOxIrqNbM5stFXpEtkGjKSqxpIwk2WVFxIDY0b4CzLUBcyRT+a+E4JgaQsj5f927\nhAACR8wbxVH7wwOojILJiDIDhJwl7teOVyvSrjkhxY96O/lrX+Ojx0DcNehu24gx\njw+7w5bcWwKBgDVQ9/DPDuw+ZA9JnrSmfiMLHttIx5swBb4uBfsSBVxN9hvaOkbK\n/6AQDltlZz5DAWGlUCkFTa6NIwk3lBfA8qDHi5Zein5NDJsbGScphhQKsI9sbsOJ\n+YXWZWlZ6uzfvCNeACOIB901oktQrzM9MQf+3efqPYm4pxATHc0Cx4aTAoGAdB3T\nGrZA4u7bFxyDHYffGUWCHeH3vkZ/Wn/ogYxUJIDDg22T8MYLo6yyT/Fyjxnwf0dm\nShVJrbZ/749vxROSTo7KkUovw0h7M2v9xU62g6phAo0R7E/5vGUAdthzRXc89CfZ\nIWdvyjgFeovlhK1bq86ytbdN5LTKX88mGr1NkbkCgYEAkc1MarTSxm+gJlME7tHd\nAs0YKNJxjFJjFVmKYAGHHFDob7rC+blvHrRNuSAOgaQZbqu3oX8TR30xM/ynlJCP\np9Gx4tx3v/uyMF9/TqdvNy/VDgMzNA9rsEI9suZI3/nL7HA2wuH6Th2yb33WbsJA\np1uUJLAEJpqSrEPwX+wIToI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "permisos-london-crime-sentinel@planificacion-london-crime.iam.gserviceaccount.com",
+  "client_id": "106154555912670478824",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/permisos-london-crime-sentinel%40planificacion-london-crime.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
