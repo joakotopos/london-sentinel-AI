@@ -53,18 +53,19 @@ Configurar variables de entorno:
 Crea un archivo .env en la raíz del proyecto y añade tus credenciales de acceso a la base de datos y llaves de API de Cloud.
 
 INSTRUCCIONES PARA UTILIZAR BIEN LA INGESTA DE DATOS:
-1) es nesesario instalar librerias de python para la ingesta de datos:
-Bash:
-pip install google-cloud-bigquerry pandas  #esto sirve para entrar al dataset de de google cloud
-pip install db types pyarrow #con esto se lograra la ingestion y que los datos se guarden de manera local
+1) Cuando usted clone el repositorio, nesesitara ubicar la carpeta raiz del proyecto, en donde debera eliminar la carpeta /.venv
+2) luego de elinar la carpeta, debera ir a la terminar (se recomienda usar la terminal del programa en donde va a ejecutar, para este caso se usara visual studio code), y se ejecutara el siguiendo comando: 
+       python -m venv .venv
+esto creara la carpeta con el entorno que nesecitara para python
+3) debera activar el entorno con el siguiente comando de la terminal:
+      .\.venv\Scripts\activate
+4) ejecute el siguiente comando para importar y descargar las librerias nesesaarias para la ingesta de datos:
+      pip install google-cloud-bigquery pandas db-dtypes pyarrow
+5) despues de instalar las librerias, debera elejir el entorno de de python, para esto se apretara la combinacion de teclas ctrl+shif+p, busque la opcion de "select python interpetrer" y seleccione donde esta la carpeta de .venv
+6) con estos pasos esta listo para ejecutar el comando python llamada "ingesta_london_crime.py"
 
-2) debera pedir permiso para obtener las llaves nesesarias de bigquery (debido a mejores practicas no s epuede subir las llaves directamente, pidalas)
-
-3) una vez tenga acceso a la llave en formato JSON debera colocarla en el siguiente directorio del proyecto:
-  ...\london-sentinel-AI\src (esto dependera tambien en donde guardara el proyecto)
-
-4) esto esta listo para su ejecucion, recordar que para ejecutar la ingesta de datos debe abrir un programa de python (visual studio code por ejemplo) e ir a la carpeta donde esta el programa: ...\london-sentinel-AI\src
-
+INSTRUCCIONES PARA UTILIZAR LA LIMPIEZA DE DATOS
+1) al hacer los procesos de ingesta anteriormente, se puede ejecutar el programa "limpieza_london_crime.py"
 5. Estructura del Repositorio
 El repositorio está organizado de la siguiente manera para facilitar su navegación:
 
