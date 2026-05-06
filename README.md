@@ -53,7 +53,7 @@ Configurar variables de entorno:
 Crea un archivo .env en la raíz del proyecto y añade tus credenciales de acceso a la base de datos y llaves de API de Cloud.
 
 INSTRUCCIONES PARA UTILIZAR BIEN LA INGESTA DE DATOS:
-1) Cuando usted clone el repositorio, nesesitara ubicar la carpeta raiz del proyecto, en donde debera eliminar la carpeta /.venv
+1) Cuando usted clone el repositorio, nesesitara ubicar la carpeta raiz del proyecto, en donde debera eliminar la carpeta /.venv si esta carpeta no esta prosiga al paso 2
 2) luego de elinar la carpeta, debera ir a la terminar (se recomienda usar la terminal del programa en donde va a ejecutar, para este caso se usara visual studio code), y se ejecutara el siguiendo comando: 
        python -m venv .venv
 esto creara la carpeta con el entorno que nesecitara para python
