@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Fase 1: Ingesta
+  ingesta:
+    build: .
+    volumes:
+      - .:/app
+    command: python src/ingestion/ingesta_london_crime.py
+
+  # Fase 2: Limpieza [cite: 74, 90]
+  limpieza:
+    build: .
+    depends_on:
+      ingesta:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    command: python src/processing/limpieza_london_crime.py
+
+  # Fase 3: Validación
+  validacion:
+    build: .
+    depends_on:
+      limpieza:
+        condition: service_completed_successfully
+    volumes:
+      - .:/app
+    command: python src/processing/validacion_london_crime.py
