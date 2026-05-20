@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  # Fase 1: Ingesta
+  # Fase 1: Ingesta de datos desde BigQuery
   ingesta:
     build: .
     volumes:
       - .:/app
     command: python src/ingestion/ingesta_london_crime.py
 
-  # Fase 2: Limpieza [cite: 74, 90]
+  # Fase 2: Limpieza y Transformación (Espera a que termine la ingesta)
   limpieza:
     build: .
     depends_on:
@@ -18,7 +18,7 @@ services:
       - .:/app
     command: python src/processing/limpieza_london_crime.py
 
-  # Fase 3: Validación
+  # Fase 3: Validación estructural y semántica (Espera a que termine la limpieza) [cite: 3]
   validacion:
     build: .
     depends_on:

@@ -1,1 +1,1 @@
-ValidaciÛn exitosa: No se detectaron errores estructurales ni sem·nticos.
+Validaci√≥n exitosa: No se detectaron errores estructurales ni sem√°nticos.
