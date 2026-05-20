@@ -27,3 +27,15 @@ services:
     volumes:
       - .:/app
     command: python src/processing/validacion_london_crime.py
+
+# Fase 4: Servidor de Jupyter Notebook dentro del contenedor
+  notebook:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    depends_on:
+      validacion:
+        condition: service_completed_successfully
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
