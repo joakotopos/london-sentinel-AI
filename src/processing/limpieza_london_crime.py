@@ -15,7 +15,8 @@ def limpieza_datos():
         print(f"datos cargados, registros iniciales: {len(df)}")
 
         #eliminar duplicados
-        df = df.drop_duplicates()
+        columnas_llave = ['borough', 'major_category', 'minor_category', 'year', 'month'] 
+        df = df.groupby(columnas_llave, as_index=False)['value'].sum()
         print(f"datos después de eliminar duplicados: {len(df)}")
 
         #estandarizar nombres de columnas

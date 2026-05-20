@@ -27,9 +27,9 @@ def ingesta_bigquery_london():
     try:
         client = bigquery.Client()
         query = """
-            SELECT borough, major_category, minor_category, value, year, month
-            FROM `bigquery-public-data.london_crime.crime_by_lsoa`
-            LIMIT 10
+           SELECT borough, major_category, minor_category, value, year, month
+    FROM `bigquery-public-data.london_crime.crime_by_lsoa`
+    WHERE year >= 2011
         """
         df = client.query(query).to_dataframe()
         df.to_parquet(FULL_STORAGE_PATH, index=False)
