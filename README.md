@@ -66,6 +66,20 @@ esto creara la carpeta con el entorno que nesecitara para python
 
 INSTRUCCIONES PARA UTILIZAR LA LIMPIEZA DE DATOS
 1) al hacer los procesos de ingesta anteriormente, se puede ejecutar el programa "limpieza_london_crime.py"
+
+INSTRUCCIONES PARA CARGAR A SUPABASE (BRONZE + SILVER)
+1) Crea un archivo `.env` en la raíz (puedes copiar y editar el archivo `.env.example`). El script lo lee automáticamente:
+      - `SUPABASE_URL`: Project URL de Supabase
+      - `SUPABASE_KEY`: llave publishable/anon (o usa `SUPABASE_PUBLISHABLE_KEY`)
+      - (Opcional) `LONDON_CRIME_LIMIT`: por defecto 50
+2) Instala dependencias:
+      - `pip install -r requirements.txt`
+3) Ejecuta el script one-shot:
+      - `python scripts/cargar_a_supabase.py`
+
+Este script inserta:
+- `data/bronze/london_test.parquet` -> tabla `london_crime_row`
+- `data/processed/london_crime_cleaned.parquet` -> tabla `london_crime_filtered`
 5. Estructura del Repositorio
 El repositorio está organizado de la siguiente manera para facilitar su navegación:
 

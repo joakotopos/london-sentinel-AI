@@ -7,6 +7,11 @@ __pycache__/
 # Credenciales y Seguridad (Crítico: Protege tu acceso a Google Cloud)
 *.json
 
+# Variables de entorno (no subir secretos)
+.env
+.env.*
+!.env.example
+
 # Datos - Estructura de Pipeline (No se suben los archivos de datos, solo el código)
 # Esto asegura que el proceso sea reproducible sin exponer el dataset 
 data/bronze/
