@@ -23,7 +23,7 @@ if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS") and os.path.exists(RUTA_JSON)
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = RUTA_JSON
 
 # Límite de filas para evitar demoras (configurable con la variable de entorno LONDON_CRIME_LIMIT)
-DEFAULT_LIMIT = int(os.getenv("LONDON_CRIME_LIMIT", "50"))
+DEFAULT_LIMIT = int(os.getenv("LONDON_CRIME_LIMIT", "10"))
 
 def ingesta_bigquery_london(limit: int = DEFAULT_LIMIT):
     credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")

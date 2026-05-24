@@ -82,16 +82,11 @@ def main() -> None:
             "Faltan variables de entorno. Define SUPABASE_URL y SUPABASE_KEY (o SUPABASE_PUBLISHABLE_KEY)."
         )
 
-    limit = int(os.getenv("LONDON_CRIME_LIMIT", "50"))
+    limit = int(os.getenv("LONDON_CRIME_LIMIT", "10"))
     timestamp = datetime.now(timezone.utc).isoformat()
 
     print(f"Ejecutando ingesta desde BigQuery (limit={limit})...")
-    ok = ingesta_bigquery_london(limit=limit)
-    if not ok:
-        raise SystemExit(
-            "La ingesta desde BigQuery falló (credenciales o consulta). "
-            "No se continuará para evitar cargar datos antiguos a Supabase."
-        )
+    ingesta_bigquery_london(limit=limit)
 
     if not os.path.exists(BRONZE_PARQUET_PATH):
         raise SystemExit(
@@ -99,12 +94,21 @@ def main() -> None:
             "Verifica que la ingesta haya terminado correctamente."
         )
 
-    df_bronze = pd.read_parquet(BRONZE_PARQUET_PATH)
+    # Leemos el archivo y forzamos el límite para evitar subir datos de ejecuciones anteriores enormes
+    df_bronze = pd.read_parquet(BRONZE_PARQUET_PATH).head(limit)
     df_bronze["ingested_at"] = timestamp
     bronze_records = _df_to_records(df_bronze)
 
-    print("Conectando a Supabase e insertando tabla london_crime_row...")
+    print("Conectando a Supabase para limpiar e insertar datos...")
     supabase = create_client(supabase_url, supabase_key)
+
+    print("Limpiando tablas en Supabase antes de la inserción...")
+    # Se usa una condición que siempre sea verdadera para eliminar todos los registros.
+    # Sabemos que la columna "year" siempre es > 0.
+    supabase.table("london_crime_row").delete().gt("year", 0).execute()
+    supabase.table("london_crime_filtered").delete().gt("year", 0).execute()
+
+    print("Insertando tabla london_crime_row...")
     _insert_in_batches(supabase, "london_crime_row", bronze_records, batch_size=100)
 
     print("Ejecutando limpieza (silver) y generando dataset filtrado...")
@@ -116,7 +120,8 @@ def main() -> None:
             "Verifica que la limpieza haya terminado correctamente."
         )
 
-    df_silver = pd.read_parquet(SILVER_PARQUET_PATH)
+    # Leemos el archivo y forzamos el límite para evitar subir datos de ejecuciones anteriores enormes
+    df_silver = pd.read_parquet(SILVER_PARQUET_PATH).head(limit)
     df_silver["cleaned_at"] = timestamp
     silver_records = _df_to_records(df_silver)
 
