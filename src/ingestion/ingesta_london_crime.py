@@ -56,11 +56,11 @@ def ingesta_bigquery_london(limit: int = DEFAULT_LIMIT):
     try:
         client = bigquery.Client()
         query = f"""
-           SELECT borough, major_category, minor_category, value, year, month
+             SELECT borough, major_category, minor_category, value, year, month
     FROM `bigquery-public-data.london_crime.crime_by_lsoa`
     WHERE year >= 2011
-    LIMIT {limit}
         """
+        ##quitaremos el limit para obtener todos los datos, si queremos limitarlo para pruebas, podemos usar la variable de entorno: LIMIT {limit}
         df = client.query(query).to_dataframe()
         df.to_parquet(FULL_STORAGE_PATH, index=False)
         print(f'\n¡ÉXITO! Datos guardados en {FULL_STORAGE_PATH}')
