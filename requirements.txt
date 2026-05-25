@@ -5,3 +5,4 @@ db-dtypes
 pyarrow
 notebook
 supabase
+sqlalchemy

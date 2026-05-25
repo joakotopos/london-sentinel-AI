@@ -1,6 +1,18 @@
-version: '3.8'
-
 services:
+  # Base de datos PostgreSQL para almacenar los datos procesados
+  db:
+    image: postgres:15-alpine
+    container_name: london_sentinel_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tu_password_secreta
+      POSTGRES_DB: london_crime_gold
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   # Fase 1: Ingesta de datos desde BigQuery
   ingesta:
     build: .
@@ -18,7 +30,7 @@ services:
       - .:/app
     command: python src/processing/limpieza_london_crime.py
 
-  # Fase 3: Validación estructural y semántica (Espera a que termine la limpieza) [cite: 3]
+  # Fase 3: Validación estructural y semántica (Espera a que termine la limpieza)
   validacion:
     build: .
     depends_on:
@@ -28,7 +40,7 @@ services:
       - .:/app
     command: python src/processing/validacion_london_crime.py
 
-# Fase 4: Servidor de Jupyter Notebook dentro del contenedor
+  # Fase 4: Servidor de Jupyter Notebook dentro del contenedor
   notebook:
     build: .
     ports:
@@ -39,3 +51,7 @@ services:
       validacion:
         condition: service_completed_successfully
     command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+
+# Configuración global de almacenamiento persistente para PostgreSQL
+volumes:
+  postgres_data:
