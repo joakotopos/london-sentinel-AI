@@ -98,5 +98,15 @@ LONDON-SENTINEL-IA
 └── README.md           # Guía general del proyecto
 
 
-###NOTA####
-por el momento todo es teorico y puede cambiar por el tiempo a medida de como avance la estructura del proyecto
+
+DEFINICION DE PROBLEMAS DE NEGOCIO Y EL PARADIGMA IA  
+
+problema de negocio: la policia de londres y autoridades metropolitanas nesecitan optimizar la distribucion de recursos y patrullaje, para ello, requieren anticipar el volumen de incidentes delictivos que ocurriran en cada comuna segun el periodo de año
+
+paradigmas de aprendizaje: aprendizaje supervisado, ya que contamos con datos historicos etiquetados con el numero real de delitos pasados
+
+tipo de problema: regresion (debido a que la variable que qeremos predecir es un valor numerico continuo: la cantidad de delitos)
+
+variable objetivo: value (numero de incidentes delictivos)
+
+variables predictorias: borought (comuna), major_category (categoria principal del delito), year y month
