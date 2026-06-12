@@ -26,6 +26,15 @@ if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS") and os.path.exists(RUTA_JSON)
 DEFAULT_LIMIT = int(os.getenv("LONDON_CRIME_LIMIT", "10"))
 
 def ingesta_bigquery_london(limit: int = DEFAULT_LIMIT):
+    # =========================================================================
+    # 🌟 ESTRATEGIA DE IDEMPOTENCIA (VALIDACIÓN INTELIGENTE)
+    # =========================================================================
+    if os.path.exists(FULL_STORAGE_PATH):
+        print(f"\n[Idempotencia] El archivo original ya existe en: {FULL_STORAGE_PATH}")
+        print("Saltando la descarga de BigQuery para ahorrar tiempo y cuotas en la nube.")
+        return # Termina la función inmediatamente con éxito sin tocar nada más
+    # =========================================================================
+
     credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
     if credentials_path and not os.path.exists(credentials_path):
         print(
@@ -54,6 +63,7 @@ def ingesta_bigquery_london(limit: int = DEFAULT_LIMIT):
         return
 
     try:
+        print("\nConectando a BigQuery para descargar los datos históricos de Londres...")
         client = bigquery.Client()
         query = f"""
              SELECT borough, major_category, minor_category, value, year, month

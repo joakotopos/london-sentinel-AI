@@ -6,3 +6,5 @@ pyarrow
 notebook
 supabase
 sqlalchemy
+scikit-learn
+matplotlib

@@ -110,3 +110,7 @@ tipo de problema: regresion (debido a que la variable que qeremos predecir es un
 variable objetivo: value (numero de incidentes delictivos)
 
 variables predictorias: borought (comuna), major_category (categoria principal del delito), year y month
+
+
+JUSTIFICACION DE ALGORTIMO
+se selecciona el algoritmo de regresion lineal (arbol de desicion) como el modelo base al ser la primera iteracion del ciclo de vida de la IA, se opta por unmodelo de alta interpetabilidad y bajo costo computacional, esto nos permitira establecer una linea de referencia rapida sobre los datos de los cuadrantes de londres sin cart en spbreajuste (overfiting), sirviendo comp punto de comparacion para modelos mas complejos en las siguientes etapas
