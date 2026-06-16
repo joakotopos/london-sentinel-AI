@@ -8,3 +8,7 @@ supabase
 sqlalchemy
 scikit-learn
 matplotlib
+fastparquet
+cramjam
+fsspec
+psutil
