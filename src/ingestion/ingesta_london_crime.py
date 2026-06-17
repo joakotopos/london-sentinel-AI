@@ -26,9 +26,6 @@ if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS") and os.path.exists(RUTA_JSON)
 DEFAULT_LIMIT = int(os.getenv("LONDON_CRIME_LIMIT", "10"))
 
 def ingesta_bigquery_london(limit: int = DEFAULT_LIMIT):
-    # =========================================================================
-    # 🌟 ESTRATEGIA DE IDEMPOTENCIA (VALIDACIÓN INTELIGENTE)
-    # =========================================================================
     if os.path.exists(FULL_STORAGE_PATH):
         print(f"\n[Idempotencia] El archivo original ya existe en: {FULL_STORAGE_PATH}")
         print("Saltando la descarga de BigQuery para ahorrar tiempo y cuotas en la nube.")

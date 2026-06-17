@@ -1,6 +1,6 @@
-| Metrica                   | Entorno 1: Contenedor Docker | Entorno 2: Maquina local |
-|---------------------------|------------------------------|--------------------------|
-| tiempo de ejecucion       | D12                          | D13                      |
-| Estabilidad de librerias  | D22                          | D23                      |
-| Consumo de memoria RAM    | D32                          | D33                      |
-| Errores de logs           | D32                          | D33                      |
+| Metrica                   | Entorno 1: Contenedor Docker | Entorno 2: Maquina local                                                               |
+|---------------------------|------------------------------|----------------------------------------------------------------------------------------|
+| tiempo de ejecucion       | 0,3399                       | 0,2777                                                                                 |
+| Estabilidad de librerias  | buena estabilidad            | error de librerias no instaladas, hay que instalarlas manualmente                      |
+| Consumo de memoria RAM    | 198,34                       | 214,20 aprox. (varia por maquina)                                                      |
+| Carga estimada cpu        | 6,3%                         | 20,2% aprox   (varia por maquina)                                                      |
